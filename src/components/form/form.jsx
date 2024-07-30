@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../../context/context";
 
 export const Form = () => {
-  const {todos, setTodos} = useContext(Context)
+  const {todos, setTodos , saveTodo} = useContext(Context)
   const submit = (e) => {
     e.preventDefault();
     const data = {
@@ -10,7 +10,8 @@ export const Form = () => {
       title:e.target.userName.value,
       isComplated:false
     }
-    setTodos([...todos, data])
+    saveTodo(data)
+    e.target.reset()
   };
   return (
     <form className="flex items-center justify-center gap-[20px] pt-[40px]" onSubmit={submit}>
